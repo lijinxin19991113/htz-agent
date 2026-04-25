@@ -22,11 +22,28 @@ class Executor:
         self._find_window()
 
     def _find_window(self):
-        """查找游戏窗口"""
-        title = self.cfg.get("game.window_title")
-        self.hwnd = win32gui.FindWindow(None, title)
-        if not self.hwnd:
-            raise RuntimeError(f"找不到游戏窗口: {title}")
+        """查找游戏窗口（前缀匹配）"""
+        import win32gui
+
+        prefix = self.cfg.get("game.window_title_prefix", "")
+
+        # 通过前缀枚举查找
+        windows = []
+        def enum_handler(hwnd, ctx):
+            if win32gui.IsWindowVisible(hwnd):
+                title = win32gui.GetWindowText(hwnd)
+                if title and title.startswith(prefix):
+                    ctx.append(hwnd)
+
+        win32gui.EnumWindows(enum_handler, windows)
+
+        if windows:
+            self.hwnd = windows[0]
+            title = win32gui.GetWindowText(self.hwnd)
+            print(f"[执行器] 找到窗口: '{title}' (hwnd={self.hwnd})")
+        else:
+            raise RuntimeError(f"找不到游戏窗口，前缀: '{prefix}'")
+
         # 激活窗口
         win32gui.SetForegroundWindow(self.hwnd)
         time.sleep(0.1)

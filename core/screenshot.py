@@ -18,6 +18,7 @@ class ScreenCapture:
         self.platform = self.cfg.get("game.platform")
         self.adb_serial = self.cfg.get("game.adb_serial")
         self.temp_file = "/tmp/htz_screenshot.png"
+        self._hwnd = None
 
     # ==================== ADB 截图 ====================
 
@@ -55,6 +56,47 @@ class ScreenCapture:
 
     # ==================== Windows 截图 ====================
 
+    def _find_window_by_prefix(self, prefix: str):
+        """通过前缀查找窗口句柄"""
+        import win32gui
+
+        def enum_handler(hwnd, ctx):
+            if win32gui.IsWindowVisible(hwnd):
+                title = win32gui.GetWindowText(hwnd)
+                if title and title.startswith(prefix):
+                    ctx.append(hwnd)
+
+        windows = []
+        win32gui.EnumWindows(enum_handler, windows)
+        return windows[0] if windows else None
+
+    def _get_hwnd(self):
+        """获取窗口句柄（带缓存）"""
+        if self._hwnd is not None:
+            return self._hwnd
+
+        import win32gui
+
+        prefix = self.cfg.get("game.window_title_prefix", "")
+
+        # 优先尝试精确前缀匹配
+        if prefix:
+            hwnd = self._find_window_by_prefix(prefix)
+            if hwnd:
+                self._hwnd = hwnd
+                import win32gui
+                title = win32gui.GetWindowText(hwnd)
+                print(f"[截图] 找到窗口: '{title}' (hwnd={hwnd})")
+                return hwnd
+
+        # 回退：尝试直接用 window_title_prefix 当完整标题
+        hwnd = win32gui.FindWindow(None, prefix)
+        if hwnd:
+            self._hwnd = hwnd
+            return hwnd
+
+        raise RuntimeError(f"找不到窗口，前缀: '{prefix}'")
+
     def win_screenshot(self, hwnd=None) -> Image.Image:
         """Windows 窗口截图"""
         try:
@@ -66,18 +108,13 @@ class ScreenCapture:
             raise RuntimeError("Windows 截图需要 pywin32 和 mss 库")
 
         if hwnd is None:
-            title = self.cfg.get("game.window_title")
-            hwnd = win32gui.FindWindow(None, title)
-            if not hwnd:
-                raise RuntimeError(f"找不到窗口: {title}")
+            hwnd = self._get_hwnd()
 
         left, top, right, bottom = win32gui.GetWindowRect(hwnd)
         width = right - left
         height = bottom - top
 
         with mss.mss() as sct:
-            monitor = sct.monitors[1]
-            # 截取指定窗口区域
             monitor = {
                 "left": left,
                 "top": top,
@@ -105,10 +142,21 @@ class ScreenCapture:
         image.save(path)
         return path
 
+    def activate_window(self):
+        """激活游戏窗口"""
+        import win32gui
+        hwnd = self._get_hwnd()
+        if hwnd:
+            win32gui.SetForegroundWindow(hwnd)
+            time.sleep(0.2)
+
 
 if __name__ == "__main__":
-    # 测试截图
     cap = ScreenCapture()
-    img = cap.capture()
-    print(f"截图尺寸: {img.size}")
-    cap.save(img)
+    try:
+        img = cap.capture()
+        print(f"截图尺寸: {img.size}")
+        cap.save(img)
+        print("截图成功")
+    except RuntimeError as e:
+        print(f"截图失败: {e}")
