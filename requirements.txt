@@ -1,0 +1,22 @@
+# 视觉 & 图像处理
+opencv-python>=4.8.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# YOLOv8
+ultralytics>=8.0.0
+
+# OCR（可选，后续用于读取血量数值）
+easyocr>=1.7.0
+
+# Windows 截图 & 操作
+mss>=9.0.1
+pywin32>=306
+
+# API
+requests>=2.31.0
+openai>=1.12.0
+
+# 配置
+pyyaml>=6.0
+python-dotenv>=1.0.0

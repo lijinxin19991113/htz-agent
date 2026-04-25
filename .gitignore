@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 配置（包含敏感信息）
+config.yaml
+.env
+.env.*
+
+# 日志
+logs/
+*.log
+
+# 数据
+data/
+*.pt          # YOLOv8 模型权重
+*.pth
+
+# 临时文件
+/tmp/
+*.png         # 截图（自动生成的）
+*.jpg
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 本地测试
+test_*.py
+debug_*.py

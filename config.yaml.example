@@ -1,0 +1,53 @@
+# 梦幻西游 AI 自动任务配置
+
+game:
+  # 平台: android (模拟器) 或 windows (PC客户端)
+  platform: windows
+  # 游戏窗口标题（请根据实际情况修改）
+  window_title: "梦幻西游"
+  # 分辨率（自动检测，可不填）
+  # resolution:
+  #   width: 1920
+  #   height: 1080
+
+api:
+  provider: minimax
+  # API Key 通过环境变量 MINIMAX_API_KEY 设置
+  base_url: "https://api.minimax.chat/v1"
+  model: "MiniMax-Text-01"
+
+# 游戏虚拟分辨率（模拟器通常用这个，Windows 可不填）
+resolution:
+  width: 960
+  height: 540
+
+# 截图间隔（秒）
+capture_interval: 0.5
+
+# 动作执行延迟
+delay:
+  action: 0.3
+  random_min: 0.1
+  random_max: 0.5
+
+# 决策超时（秒）
+decision_timeout: 10
+
+# 日志级别
+log_level: INFO
+
+# 防封设置
+anti_ban:
+  enabled: true
+  max_continuous_runtime: 3600
+  rest_interval: 300
+  random_mouse_move: true
+
+# 任务配置
+tasks:
+  shimen:
+    enabled: true
+    max_count: 20
+  zhuagui:
+    enabled: true
+    max_count: 10
