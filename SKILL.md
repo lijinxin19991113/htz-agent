@@ -1,4 +1,4 @@
-# MHXY Agent - 梦幻西游自动任务 AI
+# HTZ Agent - 梦幻西游自动任务 AI
 
 ## 项目概述
 基于 MiniMax API 的梦幻西游日常任务自动化。使用视觉识别判断场景，API 负责决策，模拟输入执行动作。
@@ -58,7 +58,7 @@ MiniMax API 决策 (JSON/REST)
 
 ## 目录结构
 ```
-mhxy-agent/
+htz-agent/
 ├── SKILL.md              # 本文件
 ├── README.md             # 项目说明
 ├── requirements.txt      # Python 依赖

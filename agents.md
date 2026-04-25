@@ -1,4 +1,4 @@
-# MHXY Agent - AI 开发助手交接文档
+# HTZ Agent - AI 开发助手交接文档
 
 > 本文档面向接手本项目的 AI Agent，详细记录项目背景、技术方案、待完成工作、已知问题。
 > 如有疑问，先查本文档，再查 SPEC.md 和 SKILL.md。
@@ -7,11 +7,11 @@
 
 ## 一、项目背景
 
-**项目名称**：MHXY Agent（梦幻西游 AI 自动任务）
+**项目名称**：HTZ Agent（梦幻西游 AI 自动任务）
 **目标**：全自动完成梦幻西游日常任务（师门、抓鬼、副本等）
 **技术路线**：视觉识别（YOLOv8）+ MiniMax API 决策 + Windows API 执行
 **平台**：Windows PC 客户端
-**代码路径**：`~/developtool/projects/mhxy-agent/`
+**代码路径**：`~/developtool/projects/htz-agent/`
 
 ---
 
@@ -51,7 +51,7 @@
 ## 三、目录结构
 
 ```
-mhxy-agent/
+htz-agent/
 ├── agents.md           # 本文件（AI 交接文档）
 ├── SPEC.md             # 详细技术方案
 ├── SKILL.md            # 项目说明
@@ -77,7 +77,7 @@ mhxy-agent/
 ├── assets/
 │   ├── templates/       # 模板图片（备选，暂时用 YOLOv8）
 │   └── weights/         # YOLOv8 模型权重
-│       └── mhxy.pt     # ⏳ 待训练
+│       └── htz.pt     # ⏳ 待训练
 │
 ├── logs/               # 运行日志
 └── data/                # 标注数据（Roboflow 格式）
@@ -127,7 +127,7 @@ result.battle_info # BattleInfo（如果在战斗中）
 **初始化**：
 ```python
 vision = Vision(yolo_model_path=None, use_cuda=True)
-# 如果 yolo_model_path 为 None，会自动寻找 assets/weights/mhxy.pt
+# 如果 yolo_model_path 为 None，会自动寻找 assets/weights/htz.pt
 # 如果模型不存在或加载失败，自动降级到 Fallback 模式
 ```
 
@@ -260,7 +260,7 @@ cfg.resolution                    # {"width": 960, "height": 540}
    model = YOLO("yolov8n.pt")
    model.train(data="dataset.yaml", epochs=50, imgsz=640)
    ```
-5. 导出权重到 `assets/weights/mhxy.pt`
+5. 导出权重到 `assets/weights/htz.pt`
 
 **标注优先级**：
 1. `attack_btn`, `confirm_btn`（最高频）
@@ -384,7 +384,7 @@ python-dotenv>=1.0.0
 
 ```bash
 # 1. 安装依赖
-cd ~/developtool/projects/mhxy-agent
+cd ~/developtool/projects/htz-agent
 pip install -r requirements.txt
 
 # 2. 确认 config.yaml

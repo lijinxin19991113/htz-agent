@@ -1,4 +1,4 @@
-# MHXY Agent - 详细技术方案
+# HTZ Agent - 详细技术方案
 
 ## 一、项目概述
 
@@ -351,7 +351,7 @@ def human_move(from_pos, to_pos):
 ## 九、文件结构
 
 ```
-mhxy-agent/
+htz-agent/
 ├── SKILL.md              # 技能文档
 ├── SPEC.md               # 本文件 - 详细技术方案
 ├── README.md             # 使用说明

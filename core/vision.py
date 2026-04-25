@@ -93,7 +93,7 @@ class YOLOv8Detector:
     YOLOv8 检测器接口
 
     使用方式：
-        detector = YOLOv8Detector(model_path="weights/mhxy.pt")
+        detector = YOLOv8Detector(model_path="weights/htz.pt")
         results = detector.detect(image)  # image 是 numpy array 或 PIL Image
         # results = [BBox(...), BBox(...), ...]
     """
@@ -103,7 +103,7 @@ class YOLOv8Detector:
         初始化 YOLOv8 检测器
 
         Args:
-            model_path: 模型权重路径，默认使用 assets/weights/mhxy.pt
+            model_path: 模型权重路径，默认使用 assets/weights/htz.pt
             device: 运行设备，"cuda" 或 "cpu"
         """
         self.model = None
@@ -125,7 +125,7 @@ class YOLOv8Detector:
             # 默认路径
             import os
             base = os.path.dirname(os.path.dirname(__file__))
-            self.model_path = os.path.join(base, "assets", "weights", "mhxy.pt")
+            self.model_path = os.path.join(base, "assets", "weights", "htz.pt")
 
         if not os.path.exists(self.model_path):
             raise FileNotFoundError(f"YOLOv8 模型未找到: {self.model_path}")

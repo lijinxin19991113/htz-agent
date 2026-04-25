@@ -1,4 +1,4 @@
-"""MHXY Agent 核心模块"""
+"""HTZ Agent 核心模块"""
 from .config import Config
 from .screenshot import ScreenCapture
 from .vision import Vision

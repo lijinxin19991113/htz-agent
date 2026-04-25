@@ -17,7 +17,7 @@ class ScreenCapture:
         self.cfg = Config()
         self.platform = self.cfg.get("game.platform")
         self.adb_serial = self.cfg.get("game.adb_serial")
-        self.temp_file = "/tmp/mhxy_screenshot.png"
+        self.temp_file = "/tmp/htz_screenshot.png"
 
     # ==================== ADB 截图 ====================
 
@@ -101,7 +101,7 @@ class ScreenCapture:
     def save(self, image: Image.Image, path: str = None) -> str:
         """保存截图到文件"""
         if path is None:
-            path = f"/tmp/mhxy_{int(time.time())}.png"
+            path = f"/tmp/htz_{int(time.time())}.png"
         image.save(path)
         return path
 
