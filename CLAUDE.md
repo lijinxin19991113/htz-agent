@@ -55,7 +55,7 @@ core/executor.py → win32api 鼠标/键盘操作
 ## Configuration
 
 - 配置文件：从 `config.yaml.example` 复制为 `config.yaml`
-- 窗口标题：`window_title` 需匹配游戏窗口
+- 窗口标题：`window_title_prefix` 需匹配游戏窗口
 - API Key：环境变量 `MINIMAX_API_KEY`
 - 平台：`game.platform: windows` 或 `android`
 

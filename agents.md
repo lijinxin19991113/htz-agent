@@ -178,7 +178,7 @@ move, talk, menu, close, confirm, wait
 
 **初始化**（需要游戏窗口在前台）：
 ```python
-exe = Executor()  # 自动查找 config.yaml 中的 window_title
+exe = Executor()  # 自动查找 config.yaml 中的 window_title_prefix
 ```
 
 **常用方法**：
@@ -233,7 +233,7 @@ from core.config import Config
 cfg = Config()
 
 cfg.get("game.platform")          # "windows"
-cfg.get("game.window_title")      # "幻唐志"
+cfg.get("game.window_title_prefix")   # "幻唐志"
 cfg.get("api.api_key")            # 从环境变量读取
 cfg.get("delay.action")           # 0.3
 cfg.resolution                    # {"width": 960, "height": 540}
@@ -331,7 +331,7 @@ class GameState:
 ```yaml
 game:
   platform: windows          # android | windows
-  window_title: "幻唐志"    # 游戏窗口标题（需确认）
+  window_title_prefix: "幻唐志"  # 游戏窗口标题前缀（需确认）
   # 分辨率（自动检测，可不填）
   # resolution:
   #   width: 1920
@@ -389,7 +389,7 @@ cd ~/developtool/projects/htz-agent
 pip install -r requirements.txt
 
 # 2. 确认 config.yaml
-# - window_title 填你的游戏窗口标题
+# - window_title_prefix 填你的游戏窗口标题前缀
 # - MINIMAX_API_KEY 环境变量
 
 # 3. 训练 YOLOv8（可选，Fallback 模式也能跑）

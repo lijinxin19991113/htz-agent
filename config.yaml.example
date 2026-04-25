@@ -3,8 +3,8 @@
 game:
   # 平台: android (模拟器) 或 windows (PC客户端)
   platform: windows
-  # 游戏窗口标题（请根据实际情况修改）
-  window_title: "幻唐志"
+  # 游戏窗口标题前缀（请根据实际情况修改）
+  window_title_prefix: "幻唐志"
   # 分辨率（自动检测，可不填）
   # resolution:
   #   width: 1920

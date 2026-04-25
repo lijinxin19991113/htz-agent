@@ -77,7 +77,7 @@ htz-agent/
 game:
   platform: android  # android | windows
   adb_serial: "127.0.0.1:5555"  # 模拟器 ADB
-  window_title: "幻唐志"  # Windows 窗口名
+  window_title_prefix: "幻唐志"  # Windows 窗口名前缀
 
 api:
   provider: minimax
