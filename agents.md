@@ -233,7 +233,7 @@ from core.config import Config
 cfg = Config()
 
 cfg.get("game.platform")          # "windows"
-cfg.get("game.window_title")      # "梦幻西游"
+cfg.get("game.window_title")      # "幻唐志"
 cfg.get("api.api_key")            # 从环境变量读取
 cfg.get("delay.action")           # 0.3
 cfg.resolution                    # {"width": 960, "height": 540}
@@ -331,7 +331,7 @@ class GameState:
 ```yaml
 game:
   platform: windows          # android | windows
-  window_title: "梦幻西游"    # 游戏窗口标题（需确认）
+  window_title: "幻唐志"    # 游戏窗口标题（需确认）
   # 分辨率（自动检测，可不填）
   # resolution:
   #   width: 1920

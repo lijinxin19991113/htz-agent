@@ -1,7 +1,7 @@
-# HTZ Agent - 梦幻西游自动任务 AI
+# HTZ Agent - 幻唐志自动任务 AI
 
 ## 项目概述
-基于 MiniMax API 的梦幻西游日常任务自动化。使用视觉识别判断场景，API 负责决策，模拟输入执行动作。
+基于 MiniMax API 的幻唐志日常任务自动化。使用视觉识别判断场景，API 负责决策，模拟输入执行动作。
 
 ## 技术架构
 
@@ -77,7 +77,7 @@ htz-agent/
 game:
   platform: android  # android | windows
   adb_serial: "127.0.0.1:5555"  # 模拟器 ADB
-  window_title: "梦幻西游"  # Windows 窗口名
+  window_title: "幻唐志"  # Windows 窗口名
 
 api:
   provider: minimax

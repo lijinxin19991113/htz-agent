@@ -59,7 +59,7 @@ class DecisionMaker:
             return {"action": "wait", "reason": f"API error: {e}"}
 
     def _system_prompt(self) -> str:
-        return """你是一个梦幻西游的 AI 操作助手。
+        return """你是一个幻唐志的 AI 操作助手。
 
 你的职责是根据当前游戏画面状态，做出最优的操作决策。
 

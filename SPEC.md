@@ -2,7 +2,7 @@
 
 ## 一、项目概述
 
-**目标**：全自动完成梦幻西游日常任务（师门、抓鬼、副本），基于视觉识别 + MiniMax API 决策。
+**目标**：全自动完成幻唐志日常任务（师门、抓鬼、副本），基于视觉识别 + MiniMax API 决策。
 
 **核心思路**：不做外挂作弊，只模拟人类操作，通过 AI 判断当前场景 + 决定下一步动作。
 
@@ -139,7 +139,7 @@ class MiniMaxClient:
         self.client = OpenAI(api_key=api_key, base_url=base_url)
 
     def decide(self, scene: str, battle_info: dict, game_state: dict) -> dict:
-        prompt = f"""你是一个梦幻西游的 AI 操作助手。
+        prompt = f"""你是一个幻唐志的 AI 操作助手。
 当前场景：{scene}
 游戏状态：{json.dumps(game_state, ensure_ascii=False)}
 战斗信息：{json.dumps(battle_info, ensure_ascii=False)}
@@ -428,5 +428,5 @@ python-dotenv>=1.0.0
 
 ### 风险声明
 - 本项目仅供个人学习研究
-- 梦幻西游有多开检测机制，使用本工具需自行承担风险
+- 幻唐志有多开检测机制，使用本工具需自行承担风险
 - 建议先用小号测试，确认安全后再用于主号

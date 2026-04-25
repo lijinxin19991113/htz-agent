@@ -1,0 +1,20 @@
+[project]
+name = "htz-agent"
+version = "0.1.0"
+description = "幻唐志 AI 自动任务工具"
+requires-python = ">=3.11"
+dependencies = [
+    "opencv-python>=4.8.0",
+    "pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "ultralytics>=8.0.0",
+    "easyocr>=1.7.0",
+    "mss>=9.0.1",
+    "pywin32>=306",
+    "requests>=2.31.0",
+    "openai>=1.12.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[tool.uv]
