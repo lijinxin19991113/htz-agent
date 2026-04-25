@@ -7,8 +7,8 @@
 
 ## 一、项目背景
 
-**项目名称**：HTZ Agent（梦幻西游 AI 自动任务）
-**目标**：全自动完成梦幻西游日常任务（师门、抓鬼、副本等）
+**项目名称**：HTZ Agent（幻唐志 AI 自动任务）
+**目标**：全自动完成幻唐志日常任务（师门、抓鬼、副本等）
 **技术路线**：视觉识别（YOLOv8）+ MiniMax API 决策 + Windows API 执行
 **平台**：Windows PC 客户端
 **代码路径**：`~/developtool/projects/htz-agent/`
@@ -66,13 +66,14 @@ htz-agent/
 │   ├── vision.py       # ✅ YOLOv8 检测 + 场景分类
 │   ├── decision.py     # ✅ MiniMax API 决策
 │   ├── executor.py     # ✅ Windows 鼠标键盘执行
-│   └── game_state.py   # ⏳ 待实现（游戏状态管理）
+│   ├── game_state.py   # ✅ 游戏状态管理
 │
 ├── tasks/              # 任务流程
 │   ├── __init__.py
-│   ├── shimen.py       # ⏳ 师门任务（待实现）
-│   ├── zhuagui.py      # ⏳ 抓鬼任务（待实现）
-│   └── fuben.py        # ⏳ 副本（待实现）
+│   ├── base.py         # ✅ 任务基类
+│   ├── shimen.py      # ✅ 师门任务流程
+│   ├── zhuagui.py     # ⏳ 抓鬼任务（待实现）
+│   └── fuben.py       # ⏳ 副本（待实现）
 │
 ├── assets/
 │   ├── templates/       # 模板图片（备选，暂时用 YOLOv8）
